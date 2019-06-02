@@ -1,11 +1,15 @@
-module user-service
+module chapi-backend/user-service
 
 go 1.12
 
 require (
+	chapi-backend/chapi-internal v1.0.0
+
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/labstack/echo v3.3.10+incompatible
-	github.com/labstack/gommon v0.2.8 // indirect
-	github.com/mattn/go-colorable v0.1.2 // indirect
-	github.com/valyala/fasttemplate v1.0.1 // indirect
-	golang.org/x/crypto v0.0.0-20190530122614-20be4c3c3ed5 // indirect
+	github.com/labstack/gommon v0.2.8
+	github.com/lib/pq v1.1.1
+	github.com/stretchr/testify v1.3.0 // indirect
 )
+
+replace chapi-backend/chapi-internal => ../chapi-internal
