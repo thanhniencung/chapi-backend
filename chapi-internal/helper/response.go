@@ -7,9 +7,11 @@ import (
 )
 
 func ResponseErr(c echo.Context, code int, errMsg ...string) error {
-	var msg = errMsg[0]
+	var msg string
 	if len(errMsg) == 0 {
 		msg = http.StatusText(code)
+	} else {
+		msg = errMsg[0]
 	}
 	return c.JSON(code, model.Response{
 		StatusCode:  code,

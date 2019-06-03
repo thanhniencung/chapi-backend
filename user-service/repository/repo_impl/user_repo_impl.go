@@ -6,7 +6,6 @@ import (
 	"chapi-backend/user-service/model"
 	"chapi-backend/user-service/repository"
 	"context"
-	"fmt"
 )
 
 type UserRepoImpl struct {
@@ -54,7 +53,6 @@ func (u *UserRepoImpl) SelectById(context context.Context, userId string) (inter
 
 	err := row.Err()
 	if err != nil {
-		fmt.Println(err)
 		return user, err
 	}
 

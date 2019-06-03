@@ -107,6 +107,8 @@ func (u *UserHandler) SignIn(c echo.Context) error {
 }
 
 func (u *UserHandler) Profile(c echo.Context) error {
+	defer c.Request().Body.Close()
+
 	// Lấy thông tin user_id từ token
 	userData := c.Get("user").(*jwt.Token)
 	claims := userData.Claims.(*internalModel.JwtCustomClaims)
