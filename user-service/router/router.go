@@ -13,8 +13,8 @@ func Router(e *echo.Echo, sql *db.Sql) {
 		UserRepo: repo.NewUserRepo(sql),
 	}
 
-	e.POST("/login", handler.Login)
+	e.POST("/sign-in", handler.SignIn)
+	e.POST("/sign-up", handler.SignUp)
 
-	e.POST("/register", handler.Register, middleware.JWTMiddleware())
 	e.GET("/profile", handler.Profile, middleware.JWTMiddleware())
 }

@@ -21,8 +21,9 @@ func NewUserRepo(sql *db.Sql) repository.UserRepository {
 func (u *UserRepoImpl) CheckLogin(context context.Context, loginReq model.LoginRequest) (internalModel.User, error) {
 	var user internalModel.User
 
-	row := u.sql.Db.QueryRowxContext(context, "SELECT phone, password FROM users WHERE phone=? AND password=?",
-						loginReq.Phone, loginReq.Password)
+	row := u.sql.Db.QueryRowxContext(
+		context, "SELECT * FROM users WHERE phone=$1 AND password=$2",
+		loginReq.Phone, loginReq.Password)
 
 	err := row.Err()
 	if err != nil {
@@ -35,5 +36,14 @@ func (u *UserRepoImpl) CheckLogin(context context.Context, loginReq model.LoginR
 	}
 
 	return user, nil
+}
+
+func (u *UserRepoImpl) Save(context context.Context, user internalModel.User) (internalModel.User, error) {
+	query := `INSERT INTO users(userId, phone, password, role, displayName) 
+          VALUES(:userId, :password, :role, :displayName)`
+
+	_, err := u.sql.Db.NamedExecContext(context, query, user)
+
+	return user, err
 }
 
