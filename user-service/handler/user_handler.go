@@ -48,7 +48,6 @@ func (m *UserHandler) SignUp(c echo.Context) error {
 	req.Role = internalModel.MEMBER.String()
 
 	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
-
 	user, err := m.UserRepo.Save(ctx, req)
 	if err != nil {
 		// Chú ý khi sử dụng cách này, bởi chúng ta đang hiện một lệnh write vào database
@@ -88,7 +87,6 @@ func (u *UserHandler) SignIn(c echo.Context) error {
 
 	req.Password = encrypt.MD5Hash(req.Password)
 	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
-
 	user, err := u.UserRepo.CheckLogin(ctx, req)
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusNotFound, err.Error())
@@ -114,7 +112,6 @@ func (u *UserHandler) Profile(c echo.Context) error {
 	claims := userData.Claims.(*internalModel.JwtCustomClaims)
 
 	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
-
 	user, err := u.UserRepo.SelectById(ctx, claims.UserId)
 
 	if err != nil {
