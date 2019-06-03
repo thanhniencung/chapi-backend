@@ -3,11 +3,13 @@ package handler
 import (
 	"chapi-backend/chapi-internal/encrypt"
 	"chapi-backend/chapi-internal/helper"
+	internalModel "chapi-backend/chapi-internal/model"
 	"chapi-backend/product-service/model"
 	"chapi-backend/product-service/repository"
 	"context"
 	"fmt"
 	"github.com/asaskevich/govalidator"
+	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"net/http"
 	"time"
@@ -29,8 +31,14 @@ func (p *ProductHandler) Add(c echo.Context) error {
 		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
 	}
 
+	// Lấy thông tin user_id từ token
+	userData := c.Get("user").(*jwt.Token)
+	claims := userData.Claims.(*internalModel.JwtCustomClaims)
+
 	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
 	req.ProductId = encrypt.UUIDV1()
+	req.UserId = claims.UserId
+
 	product, err := p.ProductRepo.AddProduct(ctx, req)
 	if err != nil {
 		fmt.Println(err)
@@ -44,13 +52,24 @@ func (p *ProductHandler) Delete(c echo.Context) error {
 	defer c.Request().Body.Close()
 
 	productId := c.Param("product_id")
+	if len(productId) == 0 {
+		return helper.ResponseErr(c, http.StatusBadRequest)
+	}
 	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
 
-	err := p.ProductRepo.DeletePRoduct(ctx, productId)
+	// Lấy thông tin user_id từ token
+	userData := c.Get("user").(*jwt.Token)
+	claims := userData.Claims.(*internalModel.JwtCustomClaims)
+
+	product := model.Product{
+		ProductId: productId,
+		UserId: claims.UserId,
+	}
+	err := p.ProductRepo.DeleteProduct(ctx, product)
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
 	}
-	return helper.ResponseData(c, nil)
+	return helper.ResponseData(c, "ok")
 }
 
 func (p *ProductHandler) Update(c echo.Context) error {

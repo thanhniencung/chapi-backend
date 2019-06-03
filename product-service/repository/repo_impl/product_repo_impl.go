@@ -5,6 +5,7 @@ import (
 	"chapi-backend/product-service/model"
 	"chapi-backend/product-service/repository"
 	"context"
+	"errors"
 	"time"
 )
 
@@ -21,9 +22,9 @@ func NewProductRepo(sql *db.Sql) repository.ProductRepository {
 func (u *ProductRepoImpl) AddProduct(context context.Context, product model.Product) (model.Product, error) {
 	sqlStatement := `
 		  INSERT INTO product(
-		  		product_id, product_name, product_image, quatity, 
+		  		user_id, product_id, product_name, product_image, quatity, 
 		  		sold_items, created_at, updated_at, price, cate_id) 
-          VALUES(:product_id, :product_name, :product_image, :quatity, 
+          VALUES(:user_id, :product_id, :product_name, :product_image, :quatity, 
           		 :sold_items, :created_at, :updated_at, :price, :cate_id)
      `
 
@@ -52,13 +53,18 @@ func (u *ProductRepoImpl) UpdateProduct(context context.Context, product model.P
 	return product, err
 }
 
-func (u *ProductRepoImpl) DeletePRoduct(context context.Context, productId string) (error) {
+func (u *ProductRepoImpl) DeleteProduct(context context.Context, product model.Product) (error) {
 	sqlStatement := ` 
 		UPDATE product
 		SET deleted_at = $1
-		WHERE product_id = $2;
+		WHERE product_id = $2 AND user_id = $3;
 	`
-	_, err := u.sql.Db.ExecContext(context, sqlStatement, time.Now(), productId)
+	// Trước khi xoá nên kiểm tra sản phẩm này có thuộc về user này hay không
+	result, err := u.sql.Db.ExecContext(context, sqlStatement, time.Now(), product.ProductId, product.UserId)
+	count, _ := result.RowsAffected()
+	if count == 0 {
+		return errors.New("Delete thất bại")
+	}
 	return err
 }
 
