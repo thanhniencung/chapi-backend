@@ -2,23 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88590fc1-8d34-481c-b651-42247e5d6f2c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/chapi-internal/encrypt/encrypt.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chapi-internal/encrypt/uuid.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/handler/handler_helper.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user-service/model/reg_req.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapi-internal/helper/response.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapi-internal/helper/validate.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapi-internal/model/role.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapi-internal/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/chapi-internal/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapi-internal/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/chapi-internal/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chapi-internal/model/base_resp.go" beforeDir="false" afterPath="$PROJECT_DIR$/chapi-internal/model/base_resp.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chapi-internal/middleware/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/chapi-internal/middleware/jwt.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chapi-internal/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/chapi-internal/model/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/cmd/user-service" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/cmd/user-service" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/handler/handler_helper.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/handler/user_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/handler/user_handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/repository/repo_impl/user_repo_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/repository/repo_impl/user_repo_impl.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/repository/user_repo.go" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/repository/user_repo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/router/router.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,26 +38,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user-service/handler/user_handler.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
-              <folding>
-                <element signature="e#17#352#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="384">
+              <caret line="107" column="45" selection-start-line="107" selection-start-column="45" selection-end-line="107" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chapi-internal/helper/validate.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user-service/repository/user_repo.go">
+        <entry file="file://$USER_HOME$/go/pkg/mod/github.com/labstack/echo@v3.3.10+incompatible/context.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-              <folding>
-                <element signature="e#20#129#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="211">
+              <caret line="102" column="4" selection-start-line="102" selection-start-column="4" selection-end-line="102" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -69,8 +68,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user-service/repository/repo_impl/user_repo_impl.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state relative-caret-position="-96">
+              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapi-internal/model/user.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -90,6 +98,11 @@
       <find>migra</find>
       <find>chapi-backend/user-service</find>
       <find>internalModel</find>
+      <find>userId</find>
+      <find>userid</find>
+      <find>23505</find>
+      <find>GenT</find>
+      <find>not_found</find>
     </findStrings>
   </component>
   <component name="GOROOT" path="$USER_HOME$/go/go1.12.5" />
@@ -115,7 +128,6 @@
         <option value="$PROJECT_DIR$/user-service/go.mod" />
         <option value="$PROJECT_DIR$/chapi-internal/go.mod" />
         <option value="$PROJECT_DIR$/chapi-internal/jwt.go" />
-        <option value="$PROJECT_DIR$/chapi-internal/middleware/jwt.go" />
         <option value="$PROJECT_DIR$/chapi-internal/model/base_res.go" />
         <option value="$PROJECT_DIR$/user-service/model/login_resp.go" />
         <option value="$PROJECT_DIR$/chapi-internal/middleware/request.go" />
@@ -125,14 +137,18 @@
         <option value="$PROJECT_DIR$/chapi-internal/model/base_resp.go" />
         <option value="$PROJECT_DIR$/user-service/model/reg_req.go" />
         <option value="$PROJECT_DIR$/chapi-internal/encrypt/encrypt.go" />
-        <option value="$PROJECT_DIR$/user-service/router/router.go" />
-        <option value="$PROJECT_DIR$/chapi-internal/model/user.go" />
         <option value="$PROJECT_DIR$/chapi-internal/encrypt/uuid.go" />
         <option value="$PROJECT_DIR$/user-service/handler/res_helper.go" />
+        <option value="$PROJECT_DIR$/chapi-internal/model/role.go" />
         <option value="$PROJECT_DIR$/user-service/handler/handler_helper.go" />
-        <option value="$PROJECT_DIR$/user-service/repository/repo_impl/user_repo_impl.go" />
+        <option value="$PROJECT_DIR$/chapi-internal/helper/response.go" />
         <option value="$PROJECT_DIR$/user-service/repository/user_repo.go" />
+        <option value="$PROJECT_DIR$/chapi-internal/middleware/jwt.go" />
+        <option value="$PROJECT_DIR$/user-service/router/router.go" />
         <option value="$PROJECT_DIR$/user-service/handler/user_handler.go" />
+        <option value="$PROJECT_DIR$/user-service/repository/repo_impl/user_repo_impl.go" />
+        <option value="$PROJECT_DIR$/chapi-internal/model/user.go" />
+        <option value="$PROJECT_DIR$/chapi-internal/helper/validate.go" />
       </list>
     </option>
   </component>
@@ -159,6 +175,24 @@
               <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
               <item name="chapi-internal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="chapi-internal" type="462c0819:PsiDirectoryNode" />
+              <item name="helper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="chapi-internal" type="462c0819:PsiDirectoryNode" />
+              <item name="middleware" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="chapi-internal" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
@@ -206,6 +240,24 @@
               <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
+            <path>
+              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go Modules &lt;chapi-backend/user-service&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+            </path>
+            <path>
+              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go Modules &lt;chapi-backend/user-service&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="chapi-internal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go Modules &lt;chapi-backend/user-service&gt;" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="chapi-internal" type="462c0819:PsiDirectoryNode" />
+              <item name="helper" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -252,7 +304,7 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="979" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="977" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20746633" />
@@ -268,7 +320,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3299435" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.2937853" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.37712345" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -366,38 +418,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapi-internal/model/claims.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapi-internal/middleware/jwt.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="34" column="22" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
-          <folding>
-            <element signature="e#20#174#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapi-internal/middleware/request_id.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user-service/db/db.go" />
-    <entry file="file://$USER_HOME$/go/go1.12.5/src/builtin/builtin.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="260" column="5" selection-start-line="260" selection-start-column="5" selection-end-line="260" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/go/go1.12.5/src/database/sql/sql.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8">
@@ -405,13 +426,6 @@
           <folding>
             <element signature="e#581#720#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/jmoiron/sqlx@v1.2.0/sqlx.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="658" column="23" selection-start-line="658" selection-start-column="23" selection-end-line="658" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -443,13 +457,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapi-internal/model/base_resp.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user-service/model/reg_req.go">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -464,31 +471,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapi-internal/model/user.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapi-internal/encrypt/encrypt.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chapi-internal/go.mod">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapi-internal/encrypt/uuid.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -506,50 +492,165 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-service/router/router.go">
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/nyaruka/phonenumbers@v1.0.42/phonenumbers.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="2787" column="5" selection-start-line="2787" selection-start-column="5" selection-end-line="2787" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/ttacon/libphonenumber@v1.0.1/phonenumberutil.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2368">
+          <caret line="2933" column="55" selection-start-line="2933" selection-start-column="55" selection-end-line="2933" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/middleware/request_id.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/encrypt/uuid.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="e#17#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/encrypt/encrypt.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/model/base_resp.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-service/handler/handler_helper.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="37" selection-end-column="1" />
+          <folding>
+            <element signature="e#17#119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/helper/response.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#16#128#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-service/router/router.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
           <folding>
             <element signature="e#16#226#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-service/handler/handler_helper.go">
+    <entry file="file://$PROJECT_DIR$/chapi-internal/model/claims.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-          <folding>
-            <element signature="e#17#67#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-service/repository/repo_impl/user_repo_impl.go">
+    <entry file="file://$PROJECT_DIR$/chapi-internal/model/role.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        <state relative-caret-position="102">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user-service/repository/user_repo.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
           <folding>
             <element signature="e#20#129#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/lib/pq@v1.1.1/error.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="120" column="10" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/jmoiron/sqlx@v1.2.0/sqlx.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="788" column="45" selection-start-line="788" selection-start-column="45" selection-end-line="788" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/go1.12.5/src/builtin/builtin.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="502">
+          <caret line="260" column="5" selection-start-line="260" selection-start-column="5" selection-end-line="260" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/middleware/jwt.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/labstack/echo@v3.3.10+incompatible/context.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="102" column="4" selection-start-line="102" selection-start-column="4" selection-end-line="102" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/user-service/handler/user_handler.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
-          <folding>
-            <element signature="e#17#352#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="384">
+          <caret line="107" column="45" selection-start-line="107" selection-start-column="45" selection-end-line="107" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-service/repository/repo_impl/user_repo_impl.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-96">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/model/user.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/helper/validate.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="19" lean-forward="true" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
         </state>
       </provider>
     </entry>

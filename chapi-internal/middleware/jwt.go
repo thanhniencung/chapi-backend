@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"chapi-backend/chapi-internal/model"
+	"errors"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
@@ -16,11 +17,15 @@ func JWTMiddleware() echo.MiddlewareFunc {
 	return middleware.JWTWithConfig(config)
 }
 
-func GenToken() (string, error) {
+func GenToken(user model.User) (string, error) {
+	if len(user.UserId) == 0 || len(user.Role) == 0 || len(user.Phone) == 0 {
+		return "", errors.New("len(UserId) == 0 || len(Role) == 0 || len(Phone) == 0")
+	}
+
 	claims := &model.JwtCustomClaims{
-		UserId: "123456",
-		Role: "Admin",
-		PhoneNumber: "0973901734",
+		UserId: user.UserId,
+		Role: user.Role,
+		PhoneNumber: user.Phone,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(time.Hour * 3600).Unix(),
 		},
