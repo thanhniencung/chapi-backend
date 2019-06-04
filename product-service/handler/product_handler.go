@@ -117,3 +117,15 @@ func (p *ProductHandler) Details(c echo.Context) error {
 	product.UserId = ""
 	return helper.ResponseData(c, product)
 }
+
+func (p *ProductHandler) List(c echo.Context) error {
+	defer c.Request().Body.Close()
+
+	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	products, err := p.ProductRepo.SelectAll(ctx)
+	if err != nil {
+		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
+	}
+
+	return helper.ResponseData(c, products)
+}

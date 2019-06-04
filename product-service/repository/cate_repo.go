@@ -10,4 +10,5 @@ type CateRepository interface {
 	UpdateCate(context context.Context, cate model.Cate) error
 	DeleteCate(context context.Context, cateId string) error
 	SelectCateById(context context.Context, userId string) (model.Cate, error)
+	SelectAll(context context.Context) ([]model.Cate, error)
 }

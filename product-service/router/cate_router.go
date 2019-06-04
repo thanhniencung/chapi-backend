@@ -20,4 +20,5 @@ func CateRouter(e *echo.Echo, sql *db.Sql) {
 	c.DELETE("/delete", handler.Delete)
 	c.PUT("/update", handler.Update)
 	c.GET("/detail/:cate_id", handler.Details)
+	c.GET("/list", handler.List)
 }

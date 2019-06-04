@@ -21,8 +21,8 @@ func NewCateRepo(sql *db.Sql) repository.CateRepository {
 
 func (c *CateRepoImpl) AddCate(context context.Context, cate model.Cate) (model.Cate, error) {
 	sqlStatement := `
-		  INSERT INTO cate(cate_id, cate_name) 
-          VALUES(:cate_id, :cate_name)
+		  INSERT INTO cate(cate_id, cate_name, created_at, updated_at) 
+          VALUES(:cate_id, :cate_name, :created_at, :updated_at)
      `
 
 	cate.CreatedAt = time.Now()
@@ -36,7 +36,9 @@ func (c *CateRepoImpl) AddCate(context context.Context, cate model.Cate) (model.
 func (c *CateRepoImpl) UpdateCate(context context.Context, cate model.Cate) error {
 	sqlStatement := `
 		UPDATE cate
-		SET cate_name = :cate_name
+		SET 
+			cate_name = :cate_name
+			deleted_at = :deleted_at
 		WHERE cate_id = :cate_id AND LENGTH(:cate_name) > 0
 	`
 	cate.UpdatedAt = time.Now()
@@ -84,5 +86,15 @@ func (c *CateRepoImpl) SelectCateById(context context.Context, cateId string) (m
 	}
 
 	return cate, nil
+}
+
+func (c *CateRepoImpl) SelectAll(context context.Context) ([]model.Cate, error) {
+	cates := []model.Cate{}
+	err := c.sql.Db.SelectContext(context, &cates, "SELECT * FROM cate ORDER BY created_at ASC")
+	if err != nil {
+		return cates, err
+	}
+
+	return cates, nil
 }
 

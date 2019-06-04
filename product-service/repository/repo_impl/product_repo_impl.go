@@ -20,6 +20,14 @@ func NewProductRepo(sql *db.Sql) repository.ProductRepository {
 }
 
 func (u *ProductRepoImpl) AddProduct(context context.Context, product model.Product) (model.Product, error) {
+	// Nên kiểm tra thêm trường hợp cate_id có tồn tại không
+	sqlCheckCateId := `select exists(select 1 from cate where cate_id = :$1)`
+	var cate = model.Cate{}
+	u.sql.Db.GetContext(context, &cate, sqlCheckCateId, product.CateId)
+	if cate == (model.Cate{}) {
+		return product, errors.New("Danh mục không tồn tại")
+	}
+
 	sqlStatement := `
 		  INSERT INTO product(
 		  		user_id, product_id, product_name, product_image, quatity, 
@@ -97,6 +105,17 @@ func (u *ProductRepoImpl) SelectProductById(context context.Context, productId s
 
 	return product, nil
 }
+
+func (c *ProductRepoImpl) SelectAll(context context.Context) ([]model.Product, error) {
+	products := []model.Product{}
+	err := c.sql.Db.SelectContext(context, &products, "SELECT * FROM product ORDER BY created_at ASC")
+	if err != nil {
+		return products, err
+	}
+
+	return products, nil
+}
+
 
 
 

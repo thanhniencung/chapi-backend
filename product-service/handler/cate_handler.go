@@ -20,12 +20,12 @@ type CateHandler struct {
 
 func (m *CateHandler) Add(c echo.Context) error {
 	// Lấy thông tin user_id từ token
-	userData := c.Get("user").(*jwt.Token)
+	/*userData := c.Get("user").(*jwt.Token)
 	claims := userData.Claims.(*internalModel.JwtCustomClaims)
 
 	if claims.Role != internalModel.ADMIN.String() {
 		return helper.ResponseErr(c, http.StatusForbidden, "Lỗi quyền truy cập") // permission denied
-	}
+	}*/
 
 	req := model.Cate{}
 	defer c.Request().Body.Close()
@@ -131,5 +131,17 @@ func (m *CateHandler) Details(c echo.Context) error {
 	}
 
 	return helper.ResponseData(c, cate)
+}
+
+func (m *CateHandler) List(c echo.Context) error {
+	defer c.Request().Body.Close()
+
+	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	cates, err := m.CateRepo.SelectAll(ctx)
+	if err != nil {
+		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
+	}
+
+	return helper.ResponseData(c, cates)
 }
 

@@ -20,4 +20,5 @@ func ProductRouter(e *echo.Echo, sql *db.Sql) {
 	p.DELETE("/delete/:product_id", handler.Delete)
 	p.PUT("/update", handler.Update)
 	p.GET("/detail/:product_id", handler.Details)
+	p.GET("/list", handler.List)
 }
