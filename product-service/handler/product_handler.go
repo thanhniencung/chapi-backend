@@ -55,8 +55,8 @@ func (p *ProductHandler) Delete(c echo.Context) error {
 	if len(productId) == 0 {
 		return helper.ResponseErr(c, http.StatusBadRequest)
 	}
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
 
+	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
 	// Lấy thông tin user_id từ token
 	userData := c.Get("user").(*jwt.Token)
 	claims := userData.Claims.(*internalModel.JwtCustomClaims)
@@ -69,13 +69,39 @@ func (p *ProductHandler) Delete(c echo.Context) error {
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
 	}
-	return helper.ResponseData(c, "ok")
+	return helper.ResponseData(c, "Delete thành công")
 }
 
 func (p *ProductHandler) Update(c echo.Context) error {
-	return helper.ResponseErr(c, http.StatusBadRequest)
+	req := model.Product{}
+	defer c.Request().Body.Close()
+
+	if err := c.Bind(&req); err != nil {
+		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
+	}
+
+	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	// Lấy thông tin user_id từ token
+	userData := c.Get("user").(*jwt.Token)
+	claims := userData.Claims.(*internalModel.JwtCustomClaims)
+	req.UserId = claims.UserId
+
+	err := p.ProductRepo.UpdateProduct(ctx, req)
+	if err != nil {
+		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
+	}
+
+	return helper.ResponseData(c, "Update thành công")
 }
 
 func (p *ProductHandler) Details(c echo.Context) error {
+	req := model.Product{}
+	defer c.Request().Body.Close()
+
+	if err := c.Bind(&req); err != nil {
+		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
+	}
+	fmt.Println(req)
+
 	return helper.ResponseErr(c, http.StatusBadRequest)
 }
