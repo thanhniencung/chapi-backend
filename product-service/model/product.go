@@ -1,6 +1,9 @@
 package model
 
-import "time"
+import (
+	"github.com/lib/pq"
+	"time"
+)
 
 type Product struct {
 	UserId  	 string    `json:"UserId,omitempty" db:"user_id,omitempty""`
@@ -13,5 +16,5 @@ type Product struct {
 	CateId 		 string    `json:"cateId,omitempty" db:"cate_id,omitempty" valid:"required"`
 	CreatedAt 	 time.Time `json:"createdAt,omitempty" db:"created_at,omitempty"`
 	UpdatedAt	 time.Time `json:"updatedAt,omitempty" db:"updated_at,omitempty"`
-	DeletedAt	 time.Time `json:"-"  db:"deleted_at,omitempty"`
+	DeletedAt	 pq.NullTime `json:"-"  db:"deleted_at,omitempty"`
 }

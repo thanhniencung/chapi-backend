@@ -39,13 +39,13 @@ func (u *ProductRepoImpl) UpdateProduct(context context.Context, product model.P
 	sqlStatement := `
 		UPDATE product
 		SET 
-			product_name = (CASE WHEN LENGTH(:product_name) = 0 THEN product_name ELSE :product_name END),
+			product_name  = (CASE WHEN LENGTH(:product_name) = 0 THEN product_name ELSE :product_name END),
 			product_image = (CASE WHEN LENGTH(:product_image) = 0 THEN product_image ELSE :product_image END),
-			quatity 	 = (CASE WHEN :quatity = 0 THEN quatity ELSE :quatity END),
-			sold_items 	 = (CASE WHEN :sold_items = 0 THEN sold_items ELSE :sold_items END),
-			price 		 = (CASE WHEN :price = 0 THEN price ELSE :price END),
-			cate_id 	 = (CASE WHEN LENGTH(:cate_id) = 0 THEN cate_id ELSE :cate_id END),
-			updated_at 	 = COALESCE (:updated_at, updated_at)
+			quatity 	  = (CASE WHEN :quatity = 0 THEN quatity ELSE :quatity END),
+			sold_items 	  = (CASE WHEN :sold_items = 0 THEN sold_items ELSE :sold_items END),
+			price 		  = (CASE WHEN :price = 0 THEN price ELSE :price END),
+			cate_id 	  = (CASE WHEN LENGTH(:cate_id) = 0 THEN cate_id ELSE :cate_id END),
+			updated_at 	  = COALESCE (:updated_at, updated_at)
 		WHERE 
 			product_id 	   = :product_id 
 			AND user_id    = :user_id
@@ -85,7 +85,6 @@ func (u *ProductRepoImpl) SelectProductById(context context.Context, productId s
 	var product model.Product
 
 	row := u.sql.Db.QueryRowxContext(context, "SELECT * FROM product WHERE product_id=$1", productId)
-
 	err := row.Err()
 	if err != nil {
 		return product, err

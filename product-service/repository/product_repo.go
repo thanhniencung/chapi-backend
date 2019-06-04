@@ -9,5 +9,5 @@ type ProductRepository interface {
 	AddProduct(context context.Context, product model.Product) (model.Product, error)
 	UpdateProduct(context context.Context, product model.Product) error
 	DeleteProduct(context context.Context, product model.Product) error
-	SelectProductById(context context.Context, userId string) (model.Product, error)
+	SelectProductById(context context.Context, productId string) (model.Product, error)
 }

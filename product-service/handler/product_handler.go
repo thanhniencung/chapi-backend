@@ -95,13 +95,27 @@ func (p *ProductHandler) Update(c echo.Context) error {
 }
 
 func (p *ProductHandler) Details(c echo.Context) error {
-	req := model.Product{}
 	defer c.Request().Body.Close()
 
-	if err := c.Bind(&req); err != nil {
-		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
+	productId := c.Param("product_id")
+	if len(productId) == 0 {
+		return helper.ResponseErr(c, http.StatusBadRequest)
 	}
-	fmt.Println(req)
 
-	return helper.ResponseErr(c, http.StatusBadRequest)
+	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	product, err := p.ProductRepo.SelectProductById(ctx, productId)
+	if err != nil {
+		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
+	}
+
+	if product == (model.Product{}) {
+		return helper.ResponseErr(c, http.StatusNotFound, "Sản phẩm này không tồn tại")
+	}
+
+	if product.DeletedAt.Valid {
+		return helper.ResponseErr(c, http.StatusNotFound, "Sản phẩm này Đã bị xoá")
+	}
+
+	product.UserId = ""
+	return helper.ResponseData(c, product)
 }
