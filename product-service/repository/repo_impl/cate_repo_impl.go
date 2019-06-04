@@ -5,6 +5,8 @@ import (
 	"chapi-backend/product-service/model"
 	"chapi-backend/product-service/repository"
 	"context"
+	"errors"
+	"time"
 )
 
 type CateRepoImpl struct {
@@ -18,18 +20,69 @@ func NewCateRepo(sql *db.Sql) repository.CateRepository {
 }
 
 func (c *CateRepoImpl) AddCate(context context.Context, cate model.Cate) (model.Cate, error) {
+	sqlStatement := `
+		  INSERT INTO cate(cate_id, cate_name) 
+          VALUES(:cate_id, :cate_name)
+     `
+
+	cate.CreatedAt = time.Now()
+	cate.UpdatedAt = time.Now()
+
+	_, err := c.sql.Db.NamedExecContext(context, sqlStatement, cate)
+	return cate, err
 	return model.Cate{}, nil
 }
 
-func (c *CateRepoImpl) UpdateCate(context context.Context, cate model.Cate) (model.Cate, error) {
-	return model.Cate{}, nil
-}
+func (c *CateRepoImpl) UpdateCate(context context.Context, cate model.Cate) error {
+	sqlStatement := `
+		UPDATE cate
+		SET cate_name = :cate_name
+		WHERE cate_id = :cate_id AND LENGTH(:cate_name) > 0
+	`
+	cate.UpdatedAt = time.Now()
 
-func (c *CateRepoImpl) DeleteCate(context context.Context, cateId string) (error) {
+	result, err := c.sql.Db.NamedExecContext(context, sqlStatement, cate)
+	if err != nil {
+		return err
+	}
+
+	count, _ := result.RowsAffected()
+	if count == 0 {
+		return errors.New("Update thất bại")
+	}
+
 	return nil
 }
 
-func (c *CateRepoImpl) SelectCateById(context context.Context, userId string) (model.Cate, error) {
-	return model.Cate{}, nil
+func (c *CateRepoImpl) DeleteCate(context context.Context, cateId string) (error) {
+	sqlStatement := ` 
+		UPDATE cate
+		SET deleted_at = $1
+		WHERE cate_id = $2;
+	`
+	// Trước khi xoá nên kiểm tra sản phẩm này có thuộc về user này hay không
+	result, err := c.sql.Db.ExecContext(context, sqlStatement, time.Now(), cateId)
+	count, _ := result.RowsAffected()
+	if count == 0 {
+		return errors.New("Delete thất bại")
+	}
+	return err
+}
+
+func (c *CateRepoImpl) SelectCateById(context context.Context, cateId string) (model.Cate, error) {
+	var cate model.Cate
+
+	row := c.sql.Db.QueryRowxContext(context, "SELECT * FROM cate WHERE cate_id=$1", cateId)
+	err := row.Err()
+	if err != nil {
+		return cate, err
+	}
+
+	err = row.StructScan(&cate)
+	if err != nil {
+		return cate, err
+	}
+
+	return cate, nil
 }
 

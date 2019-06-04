@@ -13,11 +13,11 @@ func CateRouter(e *echo.Echo, sql *db.Sql) {
 		CateRepo: repo.NewCateRepo(sql),
 	}
 
-	c := e.Group("/cate/")
+	c := e.Group("/cate")
 	c.Use(middleware.JWTMiddleware())
 
-	c.POST("/cate/add", handler.Add)
-	c.DELETE("/cate/delete", handler.Delete)
-	c.PUT("/cate/update", handler.Update)
-	c.GET("/cate/detail/:cate_id", handler.Details)
+	c.POST("/add", handler.Add)
+	c.DELETE("/delete", handler.Delete)
+	c.PUT("/update", handler.Update)
+	c.GET("/detail/:cate_id", handler.Details)
 }

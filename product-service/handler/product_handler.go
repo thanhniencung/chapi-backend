@@ -7,7 +7,6 @@ import (
 	"chapi-backend/product-service/model"
 	"chapi-backend/product-service/repository"
 	"context"
-	"fmt"
 	"github.com/asaskevich/govalidator"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
@@ -41,7 +40,6 @@ func (p *ProductHandler) Add(c echo.Context) error {
 
 	product, err := p.ProductRepo.AddProduct(ctx, req)
 	if err != nil {
-		fmt.Println(err)
 		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
 	}
 
@@ -99,7 +97,7 @@ func (p *ProductHandler) Details(c echo.Context) error {
 
 	productId := c.Param("product_id")
 	if len(productId) == 0 {
-		return helper.ResponseErr(c, http.StatusBadRequest)
+		return helper.ResponseErr(c, http.StatusBadRequest, "Thiếu id sản phẩm")
 	}
 
 	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)

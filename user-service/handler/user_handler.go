@@ -89,7 +89,7 @@ func (u *UserHandler) SignIn(c echo.Context) error {
 	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
 	user, err := u.UserRepo.CheckLogin(ctx, req)
 	if err != nil {
-		return helper.ResponseErr(c, http.StatusNotFound, err.Error())
+		return helper.ResponseErr(c, http.StatusUnauthorized, err.Error())
 	}
 
 	token, err := middleware.GenToken(user)
