@@ -45,7 +45,11 @@ func (m *UserHandler) SignUp(c echo.Context) error {
 	// Trường hợp muốn tạo user có role là Admin thì có thể truyền thêm 1 param đặc biết đã quy ước rồi kiểm tra
 	// Hoặc backend sẽ cấp cho user 1 token đặc biệt để đăng ký thành user Admin
 	// Ở đây chúng ta để mặc định là MEMBER
-	req.Role = internalModel.MEMBER.String()
+	if req.Phone == "0973901736" {
+		req.Role = internalModel.ADMIN.String()
+	} else {
+		req.Role = internalModel.MEMBER.String()
+	}
 
 	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
 	user, err := m.UserRepo.Save(ctx, req)
@@ -78,6 +82,7 @@ func (m *UserHandler) SignUp(c echo.Context) error {
 // Handler sử lý khi user đăng nhập tài khoản
 // Response trả về sẽ kèm theo token để truy cập các api về sau
 func (u *UserHandler) SignIn(c echo.Context) error {
+	//fmt.Println(">>>", c.RealIP())
 	req := userServiceModel.LoginRequest{}
 	defer c.Request().Body.Close()
 

@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88590fc1-8d34-481c-b651-42247e5d6f2c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/product-service/cmd/product-service" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/cmd/product-service" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chapi-internal/helper/ip_addr.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/product-service/handler/cate_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/handler/cate_handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/handler/product_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/handler/product_handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/model/product.go" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/model/product.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/repository/cate_repo.go" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/repository/cate_repo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/repository/product_repo.go" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/repository/product_repo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/repository/repo_impl/cate_repo_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/repository/repo_impl/cate_repo_impl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/repository/repo_impl/product_repo_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/repository/repo_impl/product_repo_impl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/router/cate_router.go" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/router/cate_router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/router/product_router.go" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/router/product_router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/cmd/user-service" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/cmd/user-service" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/handler/user_handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/handler/user_handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/router/router.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,96 +32,63 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/product-service/handler/product_handler.go">
+        <entry file="file://$PROJECT_DIR$/user-service/router/router.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="124" column="39" selection-start-line="124" selection-start-column="39" selection-end-line="124" selection-end-column="39" />
+            <state relative-caret-position="268">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <element signature="e#16#226#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/product-service/handler/cate_handler.go">
+        <entry file="file://$PROJECT_DIR$/user-service/handler/user_handler.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="144" column="40" selection-start-line="136" selection-start-column="4" selection-end-line="144" selection-end-column="40" />
+            <state relative-caret-position="420">
+              <caret line="67" column="34" lean-forward="true" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
               <folding>
-                <element signature="e#17#150#0" expanded="true" />
+                <element signature="e#17#509#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/product-service/model/product.go">
+        <entry file="file://$PROJECT_DIR$/chapi-internal/middleware/jwt.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="53" selection-start-line="13" selection-start-column="53" selection-end-line="13" selection-end-column="53" />
+            <state relative-caret-position="291">
+              <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user-service/repository/repo_impl/user_repo_impl.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="40" column="57" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/go/pkg/mod/github.com/labstack/echo@v3.3.10+incompatible/context.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chapi-internal/helper/ip_addr.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
               <folding>
-                <element signature="e#15#54#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/product-service/repository/repo_impl/product_repo_impl.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="99" selection-start-line="99" selection-end-line="99" />
-              <folding>
-                <element signature="e#19#176#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/product-service/router/product_router.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/product-service/repository/product_repo.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="51" lean-forward="true" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
-              <folding>
-                <element signature="e#20#80#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/product-service/router/cate_router.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="22" column="16" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/product-service/repository/repo_impl/cate_repo_impl.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="90" selection-start-line="90" selection-end-line="99" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/product-service/model/cate.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
-              <folding>
-                <element signature="e#15#54#0" expanded="true" />
+                <element signature="e#16#66#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -168,8 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/user-service/Makefile" />
-        <option value="$PROJECT_DIR$/user-service/database/db.go" />
         <option value="$PROJECT_DIR$/user-service/db/db.go" />
         <option value="$PROJECT_DIR$/user-service/handler/acc_handler.go" />
         <option value="$PROJECT_DIR$/user-service/model/user.go" />
@@ -187,7 +148,6 @@
         <option value="$PROJECT_DIR$/chapi-internal/middleware/request.go" />
         <option value="$PROJECT_DIR$/user-service/model/login_req.go" />
         <option value="$PROJECT_DIR$/chapi-internal/db/db.go" />
-        <option value="$PROJECT_DIR$/user-service/cmd/main.go" />
         <option value="$PROJECT_DIR$/chapi-internal/model/base_resp.go" />
         <option value="$PROJECT_DIR$/chapi-internal/encrypt/encrypt.go" />
         <option value="$PROJECT_DIR$/user-service/handler/res_helper.go" />
@@ -195,7 +155,6 @@
         <option value="$PROJECT_DIR$/user-service/handler/handler_helper.go" />
         <option value="$PROJECT_DIR$/user-service/repository/user_repo.go" />
         <option value="$PROJECT_DIR$/chapi-internal/middleware/jwt.go" />
-        <option value="$PROJECT_DIR$/user-service/router/router.go" />
         <option value="$PROJECT_DIR$/chapi-internal/helper/validate.go" />
         <option value="$PROJECT_DIR$/product-service/Makefile" />
         <option value="$PROJECT_DIR$/product-service/go.mod" />
@@ -208,17 +167,21 @@
         <option value="$PROJECT_DIR$/chapi-internal/helper/response.go" />
         <option value="$PROJECT_DIR$/product-service/product.sql" />
         <option value="$PROJECT_DIR$/chapi-internal/model/user.go" />
-        <option value="$PROJECT_DIR$/user-service/handler/user_handler.go" />
         <option value="$PROJECT_DIR$/product-service/model/cate.go" />
         <option value="$PROJECT_DIR$/product-service/repository/cate_repo.go" />
         <option value="$PROJECT_DIR$/product-service/router/cate_router.go" />
-        <option value="$PROJECT_DIR$/product-service/handler/cate_handler.go" />
         <option value="$PROJECT_DIR$/product-service/repository/repo_impl/cate_repo_impl.go" />
         <option value="$PROJECT_DIR$/product-service/repository/repo_impl/product_repo_impl.go" />
         <option value="$PROJECT_DIR$/product-service/repository/product_repo.go" />
         <option value="$PROJECT_DIR$/product-service/router/product_router.go" />
         <option value="$PROJECT_DIR$/product-service/handler/product_handler.go" />
         <option value="$PROJECT_DIR$/product-service/model/product.go" />
+        <option value="$PROJECT_DIR$/product-service/handler/cate_handler.go" />
+        <option value="$PROJECT_DIR$/chapi-internal/helper/ip.go" />
+        <option value="$PROJECT_DIR$/user-service/cmd/main.go" />
+        <option value="$PROJECT_DIR$/user-service/router/router.go" />
+        <option value="$PROJECT_DIR$/chapi-internal/helper/ip_addr.go" />
+        <option value="$PROJECT_DIR$/user-service/handler/user_handler.go" />
       </list>
     </option>
   </component>
@@ -233,7 +196,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -250,36 +212,18 @@
               <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
               <item name="chapi-internal" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
-              <item name="product-service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
-              <item name="product-service" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
-              <item name="product-service" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-              <item name="repo_impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
-              <item name="product-service" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="helper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
               <item name="user-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="cmd" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
@@ -300,10 +244,17 @@
               <item name="repository" type="462c0819:PsiDirectoryNode" />
               <item name="repo_impl" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="chapi-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chapi-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -322,16 +273,16 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/product-service/repository" />
+      <recent name="$PROJECT_DIR$/chapi-internal/middleware" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/product-service" />
       <recent name="$PROJECT_DIR$/chapi-internal/db" />
       <recent name="$PROJECT_DIR$/chapi-common/model" />
       <recent name="$PROJECT_DIR$/report-service" />
       <recent name="$PROJECT_DIR$/order-service" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/product-service/repository" />
-      <recent name="$PROJECT_DIR$/chapi-internal/middleware" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -350,7 +301,7 @@
     <frame x="0" y="23" width="1680" height="975" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24173807" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24479803" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -363,7 +314,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3299435" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.18842225" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.30874008" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -412,9 +363,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/chapi-internal/go.sum">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/user-service/db/db.go" />
     <entry file="file://$PROJECT_DIR$/chapi-internal/db/db.go">
       <provider selected="true" editor-type-id="text-editor">
@@ -501,20 +449,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chapi-internal/middleware/jwt.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/labstack/echo@v3.3.10+incompatible/context.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="102" column="4" selection-start-line="102" selection-start-column="4" selection-end-line="102" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chapi-internal/helper/validate.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8">
@@ -536,13 +470,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-service/cmd/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="22" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/user-service/go.mod">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -554,16 +481,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user-service/router/router.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="65" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="65" />
-          <folding>
-            <element signature="e#16#226#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -605,13 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/product-service/cmd/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/product-service/product.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -633,13 +543,6 @@
           <folding>
             <element signature="e#581#720#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chapi-internal/helper/response.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -671,23 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-service/repository/repo_impl/user_repo_impl.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user-service/handler/user_handler.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="95" column="19" lean-forward="true" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
-          <folding>
-            <element signature="e#17#509#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/product-service/repository/cate_repo.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -708,33 +594,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/product-service/router/cate_router.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product-service/model/cate.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
-          <folding>
-            <element signature="e#15#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product-service/repository/repo_impl/cate_repo_impl.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="90" selection-start-line="90" selection-end-line="99" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/product-service/repository/repo_impl/product_repo_impl.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="1564">
           <caret line="99" selection-start-line="99" selection-end-line="99" />
           <folding>
             <element signature="e#19#176#0" expanded="true" />
@@ -749,40 +611,136 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/product-service/handler/cate_handler.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="144" column="40" selection-start-line="136" selection-start-column="4" selection-end-line="144" selection-end-column="40" />
-          <folding>
-            <element signature="e#17#150#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/product-service/handler/product_handler.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="124" column="39" selection-start-line="124" selection-start-column="39" selection-end-line="124" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/product-service/repository/product_repo.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="51" lean-forward="true" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
           <folding>
             <element signature="e#20#80#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/product-service/model/product.go">
+    <entry file="file://$PROJECT_DIR$/product-service/router/cate_router.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="53" selection-start-line="13" selection-start-column="53" selection-end-line="13" selection-end-column="53" />
+        <state relative-caret-position="272">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/product-service/repository/repo_impl/cate_repo_impl.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="90" selection-start-line="90" selection-end-line="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/product-service/model/cate.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="69" selection-start-line="11" selection-start-column="69" selection-end-line="11" selection-end-column="69" />
           <folding>
             <element signature="e#15#54#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/product-service/model/product.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+          <folding>
+            <element signature="e#15#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/product-service/cmd/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding>
+            <element signature="e#14#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/product-service/handler/product_handler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/product-service/handler/cate_handler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="128" column="29" selection-start-line="128" selection-start-column="29" selection-end-line="128" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-service/cmd/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/helper/response.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="26" column="6" selection-start-line="22" selection-start-column="4" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/helper/ip_addr.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#16#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-service/router/router.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#16#226#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/go/pkg/mod/github.com/labstack/echo@v3.3.10+incompatible/context.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-service/repository/repo_impl/user_repo_impl.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="40" column="57" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user-service/handler/user_handler.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="67" column="34" lean-forward="true" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
+          <folding>
+            <element signature="e#17#509#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chapi-internal/middleware/jwt.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="25" column="28" lean-forward="true" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
         </state>
       </provider>
     </entry>
