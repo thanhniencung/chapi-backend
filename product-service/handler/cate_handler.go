@@ -135,7 +135,7 @@ func (m *CateHandler) Details(c echo.Context) error {
 
 func (m *CateHandler) List(c echo.Context) error {
 	defer c.Request().Body.Close()
-
+	
 	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
 	cates, err := m.CateRepo.SelectAll(ctx)
 	if err != nil {
