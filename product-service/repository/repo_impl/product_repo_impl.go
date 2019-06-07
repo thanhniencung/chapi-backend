@@ -5,6 +5,7 @@ import (
 	"chapi-backend/product-service/model"
 	"chapi-backend/product-service/repository"
 	"context"
+	"database/sql"
 	"errors"
 	"time"
 )
@@ -20,26 +21,27 @@ func NewProductRepo(sql *db.Sql) repository.ProductRepository {
 }
 
 func (u *ProductRepoImpl) AddProduct(context context.Context, product model.Product) (model.Product, error) {
+
 	// Nên kiểm tra thêm trường hợp cate_id có tồn tại không
 	sqlCheckCateId := `select exists(select 1 from cate where cate_id = :$1)`
 	var cate = model.Cate{}
-	u.sql.Db.GetContext(context, &cate, sqlCheckCateId, product.CateId)
-	if cate == (model.Cate{}) {
+	err := u.sql.Db.GetContext(context, &cate, sqlCheckCateId, product.CateId)
+	if err != nil && err == sql.ErrNoRows {
 		return product, errors.New("Danh mục không tồn tại")
 	}
 
 	sqlStatement := `
 		  INSERT INTO product(
-		  		user_id, product_id, product_name, product_image, quatity, 
+		  		user_id, product_id, product_name, product_image, quantity, 
 		  		sold_items, created_at, updated_at, price, cate_id) 
-          VALUES(:user_id, :product_id, :product_name, :product_image, :quatity, 
-          		 :sold_items, :created_at, :updated_at, :price, :cate_id)
+          VALUES(:user_id, :product_id, :product_name, :product_image, :quantity, 
+          		 :sold_items, :created_at, :updated_at, :price, :cate_id)	 
      `
 
 	product.CreatedAt = time.Now()
 	product.UpdatedAt = time.Now()
 
-	_, err := u.sql.Db.NamedExecContext(context, sqlStatement, product)
+	_, err = u.sql.Db.NamedExecContext(context, sqlStatement, product)
 	return product, err
 }
 
@@ -49,7 +51,7 @@ func (u *ProductRepoImpl) UpdateProduct(context context.Context, product model.P
 		SET 
 			product_name  = (CASE WHEN LENGTH(:product_name) = 0 THEN product_name ELSE :product_name END),
 			product_image = (CASE WHEN LENGTH(:product_image) = 0 THEN product_image ELSE :product_image END),
-			quatity 	  = (CASE WHEN :quatity = 0 THEN quatity ELSE :quatity END),
+			quantity 	  = (CASE WHEN :quantity = 0 THEN quantity ELSE :quatity END),
 			sold_items 	  = (CASE WHEN :sold_items = 0 THEN sold_items ELSE :sold_items END),
 			price 		  = (CASE WHEN :price = 0 THEN price ELSE :price END),
 			cate_id 	  = (CASE WHEN LENGTH(:cate_id) = 0 THEN cate_id ELSE :cate_id END),
