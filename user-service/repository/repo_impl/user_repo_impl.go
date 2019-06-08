@@ -64,6 +64,17 @@ func (u *UserRepoImpl) SelectById(context context.Context, userId string) (inter
 	return user, nil
 }
 
+func (u *UserRepoImpl) SelectAll(context context.Context, userId string) ([]internalModel.User, error) {
+	var users []internalModel.User
+	err := u.sql.Db.SelectContext(context, &users,
+		"SELECT display_name, phone, avatar FROM users WHERE user_id != $1", userId)
+	if err != nil {
+		return users, err
+	}
+
+	return users, nil
+}
+
 
 
 

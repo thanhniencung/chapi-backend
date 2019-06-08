@@ -133,3 +133,21 @@ func (u *UserHandler) Profile(c echo.Context) error {
 	return helper.ResponseData(c, user)
 }
 
+func (u *UserHandler) List(c echo.Context) error {
+	defer c.Request().Body.Close()
+
+	// Lấy thông tin user_id từ token
+	userData := c.Get("user").(*jwt.Token)
+	claims := userData.Claims.(*internalModel.JwtCustomClaims)
+
+	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	user, err := u.UserRepo.SelectAll(ctx, claims.UserId)
+
+	if err != nil {
+		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
+	}
+
+	return helper.ResponseData(c, user)
+}
+
+

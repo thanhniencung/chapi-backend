@@ -17,4 +17,5 @@ func Router(e *echo.Echo, sql *db.Sql) {
 	e.POST("/sign-up", handler.SignUp)
 
 	e.GET("/profile", handler.Profile, middleware.JWTMiddleware())
+	e.GET("/list", handler.List, middleware.JWTMiddleware())
 }

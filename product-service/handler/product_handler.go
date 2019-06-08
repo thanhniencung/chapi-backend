@@ -12,6 +12,7 @@ import (
 	"github.com/labstack/echo"
 	"net/http"
 	"time"
+	"fmt"
 )
 
 type ProductHandler struct {
@@ -42,6 +43,8 @@ func (p *ProductHandler) Add(c echo.Context) error {
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
 	}
+
+	fmt.Println(product)
 
 	return helper.ResponseData(c, product)
 }
