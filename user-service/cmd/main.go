@@ -1,18 +1,18 @@
 package main
 
 import (
-	"chapi-backend/user-service/router"
 	"chapi-backend/chapi-internal/db"
+	"chapi-backend/user-service/router"
 	"github.com/labstack/echo"
 )
 
 func main() {
 	sql := &db.Sql{
-		Host: "localhost",
-		Port: 5432,
+		Host:     "localhost",
+		Port:     5432,
 		UserName: "ryan",
 		Password: "postgres",
-		DbName: "user-service",
+		DbName:   "user-service",
 	}
 
 	sql.Connect()

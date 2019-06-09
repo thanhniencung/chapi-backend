@@ -7,12 +7,12 @@ import (
 	"chapi-backend/product-service/model"
 	"chapi-backend/product-service/repository"
 	"context"
+	"fmt"
 	"github.com/asaskevich/govalidator"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"net/http"
 	"time"
-	"fmt"
 )
 
 type ProductHandler struct {
@@ -27,7 +27,7 @@ func (p *ProductHandler) Add(c echo.Context) error {
 		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
 	}
 
-	if _,err := govalidator.ValidateStruct(req); err != nil {
+	if _, err := govalidator.ValidateStruct(req); err != nil {
 		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
 	}
 
@@ -35,7 +35,7 @@ func (p *ProductHandler) Add(c echo.Context) error {
 	userData := c.Get("user").(*jwt.Token)
 	claims := userData.Claims.(*internalModel.JwtCustomClaims)
 
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 	req.ProductId = encrypt.UUIDV1()
 	req.UserId = claims.UserId
 
@@ -57,14 +57,14 @@ func (p *ProductHandler) Delete(c echo.Context) error {
 		return helper.ResponseErr(c, http.StatusBadRequest)
 	}
 
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 	// Lấy thông tin user_id từ token
 	userData := c.Get("user").(*jwt.Token)
 	claims := userData.Claims.(*internalModel.JwtCustomClaims)
 
 	product := model.Product{
 		ProductId: productId,
-		UserId: claims.UserId,
+		UserId:    claims.UserId,
 	}
 	err := p.ProductRepo.DeleteProduct(ctx, product)
 	if err != nil {
@@ -81,7 +81,7 @@ func (p *ProductHandler) Update(c echo.Context) error {
 		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
 	}
 
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 	// Lấy thông tin user_id từ token
 	userData := c.Get("user").(*jwt.Token)
 	claims := userData.Claims.(*internalModel.JwtCustomClaims)
@@ -103,7 +103,7 @@ func (p *ProductHandler) Details(c echo.Context) error {
 		return helper.ResponseErr(c, http.StatusBadRequest, "Thiếu id sản phẩm")
 	}
 
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 	product, err := p.ProductRepo.SelectProductById(ctx, productId)
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
@@ -124,7 +124,7 @@ func (p *ProductHandler) Details(c echo.Context) error {
 func (p *ProductHandler) List(c echo.Context) error {
 	defer c.Request().Body.Close()
 
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 	products, err := p.ProductRepo.SelectAll(ctx)
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())

@@ -34,11 +34,11 @@ func (m *CateHandler) Add(c echo.Context) error {
 		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
 	}
 
-	if _,err := govalidator.ValidateStruct(req); err != nil {
+	if _, err := govalidator.ValidateStruct(req); err != nil {
 		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
 	}
 
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 	req.CateId = encrypt.UUIDV1()
 
 	cate, err := m.CateRepo.AddCate(ctx, req)
@@ -65,11 +65,11 @@ func (m *CateHandler) Delete(c echo.Context) error {
 		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
 	}
 
-	if _,err := govalidator.ValidateStruct(req); err != nil {
+	if _, err := govalidator.ValidateStruct(req); err != nil {
 		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
 	}
 
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 	err := m.CateRepo.DeleteCate(ctx, req.CateId)
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
@@ -94,11 +94,11 @@ func (m *CateHandler) Update(c echo.Context) error {
 		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
 	}
 
-	if _,err := govalidator.ValidateStruct(req); err != nil {
+	if _, err := govalidator.ValidateStruct(req); err != nil {
 		return helper.ResponseErr(c, http.StatusBadRequest, err.Error())
 	}
 
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 
 	err := m.CateRepo.UpdateCate(ctx, req)
 	if err != nil {
@@ -116,7 +116,7 @@ func (m *CateHandler) Details(c echo.Context) error {
 		return helper.ResponseErr(c, http.StatusBadRequest, "Thiếu id danh mục")
 	}
 
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 	cate, err := m.CateRepo.SelectCateById(ctx, cateId)
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
@@ -135,8 +135,8 @@ func (m *CateHandler) Details(c echo.Context) error {
 
 func (m *CateHandler) List(c echo.Context) error {
 	defer c.Request().Body.Close()
-	
-	ctx, _:= context.WithTimeout(c.Request().Context(), 10 * time.Second)
+
+	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 	cates, err := m.CateRepo.SelectAll(ctx)
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
@@ -144,4 +144,3 @@ func (m *CateHandler) List(c echo.Context) error {
 
 	return helper.ResponseData(c, cates)
 }
-

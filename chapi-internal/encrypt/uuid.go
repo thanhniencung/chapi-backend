@@ -11,4 +11,3 @@ func UUID() string {
 func UUIDV1() string {
 	return uuid.NewV1().String()
 }
-

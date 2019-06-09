@@ -97,4 +97,3 @@ func (c *CateRepoImpl) SelectAll(context context.Context) ([]model.Cate, error) 
 
 	return cates, nil
 }
-

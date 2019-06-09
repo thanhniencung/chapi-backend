@@ -117,7 +117,3 @@ func (c *ProductRepoImpl) SelectAll(context context.Context) ([]model.Product, e
 
 	return products, nil
 }
-
-
-
-

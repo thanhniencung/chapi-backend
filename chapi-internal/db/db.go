@@ -9,12 +9,12 @@ import (
 
 // https://jmoiron.github.io/sqlx/
 type Sql struct {
-	Db *sqlx.DB
-	Host      string
-	Port      int
-	UserName  string
-	Password  string
-	DbName    string
+	Db       *sqlx.DB
+	Host     string
+	Port     int
+	UserName string
+	Password string
+	DbName   string
 }
 
 func (s *Sql) Connect() {

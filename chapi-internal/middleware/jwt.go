@@ -23,8 +23,8 @@ func GenToken(user model.User) (string, error) {
 	}
 
 	claims := &model.JwtCustomClaims{
-		UserId: user.UserId,
-		Role: user.Role,
+		UserId:      user.UserId,
+		Role:        user.Role,
 		PhoneNumber: user.Phone,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(time.Hour * 3600).Unix(),
@@ -42,6 +42,3 @@ func GenToken(user model.User) (string, error) {
 
 	return result, nil
 }
-
-
-

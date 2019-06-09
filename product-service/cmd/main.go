@@ -7,13 +7,13 @@ import (
 	"github.com/labstack/echo/middleware"
 )
 
-func main()  {
+func main() {
 	sql := &db.Sql{
-		Host: "localhost",
-		Port: 5432,
+		Host:     "localhost",
+		Port:     5432,
 		UserName: "ryan",
 		Password: "postgres",
-		DbName: "product-service",
+		DbName:   "product-service",
 	}
 
 	sql.Connect()

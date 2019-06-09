@@ -14,15 +14,15 @@ func ResponseErr(c echo.Context, code int, errMsg ...string) error {
 		msg = errMsg[0]
 	}
 	return c.JSON(code, model.Response{
-		StatusCode:  code,
-		Message: msg,
+		StatusCode: code,
+		Message:    msg,
 	})
 }
 
 func ResponseData(c echo.Context, data interface{}) error {
 	return c.JSON(http.StatusOK, model.Response{
-		StatusCode:  http.StatusOK,
-		Message: http.StatusText(http.StatusOK),
-		Data: data,
+		StatusCode: http.StatusOK,
+		Message:    http.StatusText(http.StatusOK),
+		Data:       data,
 	})
 }
