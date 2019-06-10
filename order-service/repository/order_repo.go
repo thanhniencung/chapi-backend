@@ -6,8 +6,8 @@ import (
 )
 
 type OrderRepository interface {
-	CreateOrder(context context.Context, order model.Order) error
-	UpdateStateOrder(context context.Context, stateOrder string) error
-	AddToCard(context context.Context, card model.Card) error
-	OrderInfo() model.Order
+	UpdateStateOrder(context context.Context, order model.Order) error
+	AddToCard(context context.Context, userId string, card model.Card) error
+	CountShoppingCard(context context.Context, userId string) (model.OrderCount, error)
+	ShoppingCard(context context.Context, userId string, orderId string) (model.Order, error)
 }

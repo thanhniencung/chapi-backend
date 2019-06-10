@@ -30,7 +30,6 @@ func (c *CateRepoImpl) AddCate(context context.Context, cate model.Cate) (model.
 
 	_, err := c.sql.Db.NamedExecContext(context, sqlStatement, cate)
 	return cate, err
-	return model.Cate{}, nil
 }
 
 func (c *CateRepoImpl) UpdateCate(context context.Context, cate model.Cate) error {

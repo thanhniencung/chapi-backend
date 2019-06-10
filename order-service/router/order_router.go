@@ -17,7 +17,7 @@ func Router(e *echo.Echo, sql *db.Sql) {
 	c.Use(middleware.JWTMiddleware())
 
 	e.POST("/add", handler.AddToCard)
-	e.POST("/confirm", handler.ConfirmOrder)
-	e.POST("/info", handler.OrderCountItem)
-	e.POST("/details", handler.OrderDetails)
+	e.POST("/update", handler.Update)
+	e.POST("/count", handler.OrderCountItem)
+	e.GET("/detail/:order_id", handler.OrderDetails)
 }

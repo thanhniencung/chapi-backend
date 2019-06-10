@@ -12,7 +12,7 @@ func main() {
 		Port:     5432,
 		UserName: "ryan",
 		Password: "postgres",
-		DbName:   "user-service",
+		DbName:   "order-service",
 	}
 
 	sql.Connect()
