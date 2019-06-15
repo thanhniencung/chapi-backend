@@ -4,6 +4,7 @@ import (
 	"chapi-backend/chapi-internal/db"
 	"chapi-backend/order-service/router"
 	"github.com/labstack/echo"
+		"github.com/labstack/echo/middleware"
 )
 
 func main() {
@@ -19,6 +20,8 @@ func main() {
 	defer sql.Close()
 
 	e := echo.New()
+	e.Use(middleware.Logger())
+
 	router.Router(e, sql)
 	e.Logger.Fatal(e.Start(":3003"))
 }

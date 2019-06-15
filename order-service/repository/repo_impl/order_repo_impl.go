@@ -2,13 +2,14 @@ package repo_impl
 
 import (
 	"chapi-backend/chapi-internal/db"
+	internal "chapi-backend/chapi-internal/encrypt"
 	"chapi-backend/order-service/model"
 	"chapi-backend/order-service/repository"
-	internal "chapi-backend/chapi-internal/encrypt"
 	"context"
 	"database/sql"
 	"errors"
 	"time"
+	"fmt"
 )
 
 type OrderRepoImpl struct {
@@ -25,12 +26,12 @@ func NewOrderRepo(sql *db.Sql) repository.OrderRepository {
 // chú ý trước khi tạo 1 record trong order table thì kiểm tra user hiện tại đã có
 // order hay chưa, nếu có rồi thì ko làm gì cả, chưa có thì mới tạo mới
 // 2. insert 1 record vào card table
-func (o *OrderRepoImpl) AddToCard(context context.Context, userId string, card model.Card) error {
-	sqlCheckOrder := `select exists(select 1 from orders where user_id = $1 and status = $2)`
+func (o *OrderRepoImpl) AddToCard(context context.Context, userId string, card model.Card) (int, error) {
+	sqlCheckOrder := `select * from orders where user_id = $1 and status = $2`
 	var orderRow = model.Order{}
 	err := o.sql.Db.GetContext(context, &orderRow, sqlCheckOrder, userId, model.ORDERING.String())
 	if err != nil && err == sql.ErrNoRows {
-		// Tạo 1 order mới mới với staus = ORDERING
+		// Tạo 1 order mới với staus = ORDERING
 		sqlInsertOrderStatement := `
 		  INSERT INTO orders(user_id, order_id, status, updated_at) 
           VALUES(:user_id, :order_id, :status, :updated_at)
@@ -42,19 +43,51 @@ func (o *OrderRepoImpl) AddToCard(context context.Context, userId string, card m
 
 		_, err := o.sql.Db.NamedExecContext(context, sqlInsertOrderStatement, orderRow)
 		if err != nil {
-			return err
+			return 0, err
+		}
+	}
+
+	// Kiểm tra xem product id có tồn tại trong shopping chưa, nếu có rồi thì update quantity
+	sqlCheckCard := `select * from card where product_id = $1`
+	var cardRow = model.Card{}
+	err = o.sql.Db.GetContext(context, &cardRow, sqlCheckCard, card.ProductId)
+	if err != nil && err == sql.ErrNoRows {
+		sqlInsertCardStatement := `
+		  INSERT INTO card(order_id, product_id, product_name, product_image, quantity, price) 
+          VALUES(:order_id, :product_id, :product_name, :product_image, :quantity, :price)
+     	`
+		card.OrderId = orderRow.OrderId
+		card.Quantity = 1
+
+		_, err = o.sql.Db.NamedExecContext(context, sqlInsertCardStatement, card)
+		if err != nil {
+			return 0, err
 		}
 	}
 
 	// Nếu đã tạo order cho user này rồi thì chỉ update table card thôi
-	sqlInsertCardStatement := `
-		  INSERT INTO card(order_id, product_id, product_name, product_image, quantity, price) 
-          VALUES(:order_id, :product_id, :product_name, :product_image, :quantity, :price)
-     `
-	card.OrderId = orderRow.OrderId
-	_, err = o.sql.Db.NamedExecContext(context, sqlInsertCardStatement, card)
+	sqlUpdateCardStatement := `
+		UPDATE card
+		SET quantity = :quantity
+		WHERE product_id = :product_id
+	`
+	card.Quantity = cardRow.Quantity + 1;
 
-	return err
+	_, err = o.sql.Db.NamedExecContext(context, sqlUpdateCardStatement, card)
+	if err != nil {
+		return 0, err
+	}
+
+	var total int;
+	err = o.sql.Db.QueryRowxContext(context,
+		"SELECT SUM(quantity) AS total FROM card WHERE order_id=$1", orderRow.OrderId).Scan(&total)
+	if err != nil {
+		fmt.Println(err.Error())
+		fmt.Println("ORDER_ID = ", card.OrderId)
+		return 0, err
+	}
+
+	return total, nil
 }
 
 func (o *OrderRepoImpl) UpdateStateOrder(context context.Context, order model.Order) error {
