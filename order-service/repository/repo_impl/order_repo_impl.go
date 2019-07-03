@@ -47,11 +47,18 @@ func (o *OrderRepoImpl) AddToCard(context context.Context, userId string, card m
 		}
 	}
 
+	fmt.Println("ORDER_ID = ", orderRow.OrderId)
+
 	// Kiểm tra xem product id có tồn tại trong shopping chưa, nếu có rồi thì update quantity
-	sqlCheckCard := `select * from card where product_id = $1`
+	sqlCheckCard := `select * from card where product_id = $1 and order_id = $2`
 	var cardRow = model.Card{}
-	err = o.sql.Db.GetContext(context, &cardRow, sqlCheckCard, card.ProductId)
+	err = o.sql.Db.GetContext(context, &cardRow, sqlCheckCard, card.ProductId, orderRow.OrderId)
+	fmt.Println("OOO = ", err)
 	if err != nil && err == sql.ErrNoRows {
+
+		fmt.Println("OOO INSERT = ", orderRow.OrderId)
+
+		fmt.Println("LOI 1: ", err.Error())
 		sqlInsertCardStatement := `
 		  INSERT INTO card(order_id, product_id, product_name, product_image, quantity, price) 
           VALUES(:order_id, :product_id, :product_name, :product_image, :quantity, :price)
@@ -61,6 +68,7 @@ func (o *OrderRepoImpl) AddToCard(context context.Context, userId string, card m
 
 		_, err = o.sql.Db.NamedExecContext(context, sqlInsertCardStatement, card)
 		if err != nil {
+			fmt.Println("LOI 2: ", err.Error())
 			return 0, err
 		}
 	}
@@ -75,17 +83,20 @@ func (o *OrderRepoImpl) AddToCard(context context.Context, userId string, card m
 
 	_, err = o.sql.Db.NamedExecContext(context, sqlUpdateCardStatement, card)
 	if err != nil {
+		fmt.Println("LOI 3: ", err.Error())
 		return 0, err
 	}
 
 	var total int;
 	err = o.sql.Db.QueryRowxContext(context,
-		"SELECT SUM(quantity) AS total FROM card WHERE order_id=$1", orderRow.OrderId).Scan(&total)
+		"SELECT COALESCE(SUM(quantity), 0) AS total FROM card WHERE order_id=$1", orderRow.OrderId).Scan(&total)
 	if err != nil {
+		fmt.Println("LOI 4: ", err.Error())
 		fmt.Println(err.Error())
-		fmt.Println("ORDER_ID = ", card.OrderId)
 		return 0, err
 	}
+
+	fmt.Println("TOTAL 1 = ", total)
 
 	return total, nil
 }
@@ -95,7 +106,7 @@ func (o *OrderRepoImpl) UpdateStateOrder(context context.Context, order model.Or
 	sqlStatement := `
 		UPDATE orders
 		SET 
-			status = :status
+			status = :status,
 			updated_at = :updated_at
 		WHERE 
 			user_id = :user_id 
@@ -116,12 +127,53 @@ func (o *OrderRepoImpl) UpdateStateOrder(context context.Context, order model.Or
 	return nil
 }
 
+func (o *OrderRepoImpl) UpdateQuantityOrder(context context.Context, userId string, orderId string, quantity int, productId string) error {
+		// status, order_id, user_id
+	sqlStatement := `
+		UPDATE card
+		SET 
+			quantity = :quantity
+		WHERE 
+			order_id IN (
+				SELECT order_id 
+				FROM orders 
+				WHERE 
+					user_id = :user_id and 
+					order_id = :order_id and
+					status = 'ORDERING'
+			) 
+			AND order_id = :order_id
+			AND product_id = :product_id
+	`
+
+	fmt.Println("USER_ID = ",userId )
+
+	result, err := o.sql.Db.NamedExecContext(context, sqlStatement, 
+									map[string]interface{}{
+				            "quantity": quantity,
+				            "user_id": userId,
+				            "product_id": productId,
+				            "order_id": orderId,
+				          })
+
+	if err != nil {
+		return err
+	}
+
+	count, _ := result.RowsAffected()
+	if count == 0 {
+		return errors.New("Update thất bại")
+	}
+
+	return nil
+}
+
 func (o *OrderRepoImpl) CountShoppingCard(context context.Context, userId string) (model.OrderCount, error) {
 	// Order của ai thì người đó mới được xem thông tin : orders.user_id = $2
 	sqlCountStatement := `
 		SELECT
 		   orders.order_id,	
-		   COUNT(*) AS count_item
+		   SUM(card.quantity) AS total
 		FROM
 		   orders
 		INNER JOIN card 
@@ -132,17 +184,20 @@ func (o *OrderRepoImpl) CountShoppingCard(context context.Context, userId string
 		GROUP BY
 		   orders.order_id
 	`
+
 	row := o.sql.Db.QueryRowxContext(context, sqlCountStatement, userId)
 
 	orderCount := model.OrderCount{}
 
 	err := row.Err()
 	if err != nil {
+		fmt.Println("SQL ", err)
 		return orderCount, err
 	}
 
 	err = row.StructScan(&orderCount)
 	if err != nil {
+		orderCount.Total = -1
 		return orderCount, err
 	}
 
@@ -162,7 +217,7 @@ func (o *OrderRepoImpl) ShoppingCard(context context.Context, userId string, ord
 		   orders
 		INNER JOIN card 
 		ON 
-          orders.user_id = $1 AND 
+      orders.user_id = $1 AND 
 		  orders.order_id = $2 AND 
 		  orders.order_id = card.order_id AND 
 		  orders.status = 'ORDERING'
@@ -185,4 +240,42 @@ func (o *OrderRepoImpl) ShoppingCard(context context.Context, userId string, ord
 
 	return orders, nil
 }
+
+func (o *OrderRepoImpl) ListOrder(context context.Context) ([]model.Order, error) {
+	sqlOrders := `
+		SELECT
+		   orders.user_id,
+			 orders.order_id,
+			 orders.updated_at,
+			 orders.status,
+			 SUM(card.total) as total
+		FROM
+		   orders
+		INNER JOIN (
+			SELECT 
+				card.order_id,
+				(card.price * SUM(card.quantity)) as total
+			FROM card
+			GROUP BY 
+				card.order_id, card.price
+		) card
+		ON 
+		  orders.order_id = card.order_id 
+		GROUP BY 
+		  orders.user_id,
+			orders.order_id,
+			orders.updated_at, 
+			orders.status
+	`
+	orders := []model.Order{}
+
+	err := o.sql.Db.SelectContext(context, &orders, sqlOrders)
+	if err != nil {
+		return orders, err
+	}
+
+	return orders, nil
+}
+
+
 
