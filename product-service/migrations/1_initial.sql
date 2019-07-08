@@ -6,7 +6,7 @@ CREATE TABLE "cate"
     "created_at" timestamp with time zone,
     "deleted_at" time with time zone,
     "updated_at" time with time zone
-)
+);
 
 CREATE TABLE "product"
 (
@@ -21,7 +21,7 @@ CREATE TABLE "product"
     "created_at" timestamp with time zone,
     "updated_at" timestamp with time zone,
     "user_id" text NOT NULL
-)
+);
 
 -- +migrate Down
 -- SQL section 'Down' is executed when this migration is rolled back

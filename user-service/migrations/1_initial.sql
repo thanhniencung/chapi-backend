@@ -10,7 +10,7 @@ CREATE TABLE "users"
     CONSTRAINT users_pkey PRIMARY KEY (user_id, phone),
     CONSTRAINT users_phone_key UNIQUE (phone),
     CONSTRAINT users_userid_key UNIQUE (user_id)
-)
+);
 
 -- +migrate Down
 -- SQL section 'Down' is executed when this migration is rolled back
