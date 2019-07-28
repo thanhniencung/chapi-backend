@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  user-service:
+    container_name: order-service
+    build: .
+    image: order-service:1.0
+    ports:
+      - "3003:3003"

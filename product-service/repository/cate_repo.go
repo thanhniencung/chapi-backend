@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"chapi-backend/product-service/model"
+	"product-service/model"
 	"context"
 )
 

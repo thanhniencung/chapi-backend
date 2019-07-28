@@ -1,10 +1,10 @@
 package router
 
 import (
-	"chapi-backend/chapi-internal/db"
-	"chapi-backend/chapi-internal/middleware"
-	"chapi-backend/product-service/handler"
-	repo "chapi-backend/product-service/repository/repo_impl"
+	"github.com/thanhniencung/chapi-internal/db"
+	"github.com/thanhniencung/chapi-internal/middleware"
+	"product-service/handler"
+	repo "product-service/repository/repo_impl"
 	"github.com/labstack/echo"
 )
 

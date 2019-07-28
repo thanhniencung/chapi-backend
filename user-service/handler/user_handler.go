@@ -18,6 +18,7 @@ import (
 	"time"
 )
 
+
 type UserHandler struct {
 	UserRepo repository.UserRepository
 }
@@ -82,21 +83,32 @@ func (m *UserHandler) SignUp(c echo.Context) error {
 // Handler sử lý khi user đăng nhập tài khoản
 // Response trả về sẽ kèm theo token để truy cập các api về sau
 func (u *UserHandler) SignIn(c echo.Context) error {
-	//fmt.Println(">>>", c.RealIP())
+	/**** Lấy thông tin dữ liệu từ người dùng gửi lên *******/
 	req := userServiceModel.LoginRequest{}
 	defer c.Request().Body.Close()
 
 	if err := c.Bind(&req); err != nil {
 		return helper.ResponseErr(c, http.StatusBadRequest)
 	}
+	/**** ket thuc  *******/
 
+
+	/**** Convert pass to md5 *******/
 	req.Password = encrypt.MD5Hash(req.Password)
+	/**** ket thuc  *******/
+
+	/**** check database  *******/
 	ctx, _ := context.WithTimeout(c.Request().Context(), 10*time.Second)
 	user, err := u.UserRepo.CheckLogin(ctx, req)
+	/**** ket thuc  *******/
+
+	/**** check ket qua tu database  *******/
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusUnauthorized, err.Error())
 	}
+	/**** ket thuc check ket qua tu database  *******/
 
+	/**** gen token  *******/
 	token, err := middleware.GenToken(user)
 	if err != nil {
 		return helper.ResponseErr(c, http.StatusInternalServerError, err.Error())
@@ -109,6 +121,7 @@ func (u *UserHandler) SignIn(c echo.Context) error {
 
 	helper.FormatUserResponse(&user)
 	return helper.ResponseData(c, userResponse{user, token})
+
 }
 
 func (u *UserHandler) Profile(c echo.Context) error {

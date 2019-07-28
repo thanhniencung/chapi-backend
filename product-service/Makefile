@@ -12,3 +12,7 @@ db-down:
 
 db-status:
 	/Users/ryan/go/bin/sql-migrate status -config=dbconfig.yml -env="development"
+
+build:
+	docker rmi -f product-service
+	docker-compose up

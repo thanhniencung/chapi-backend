@@ -9,6 +9,7 @@ import (
 )
 
 func Router(e *echo.Echo, sql *db.Sql) {
+
 	handler := handler.UserHandler{
 		UserRepo: repo.NewUserRepo(sql),
 	}

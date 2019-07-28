@@ -1,5 +1,5 @@
 run:
-	cd cmd && go get -v && go build -o order-service && ./order-service
+	cd cmd && go get -v && GOOS=linux go build -o order-service && ./order-service
 
 db-up:
 	/Users/ryan/go/bin/sql-migrate up -config=dbconfig.yml -env=development

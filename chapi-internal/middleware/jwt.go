@@ -24,6 +24,7 @@ func GenToken(user model.User) (string, error) {
 		return "", errors.New("len(UserId) == 0 || len(Role) == 0 || len(Phone) == 0")
 	}
 
+	// create payload data
 	claims := &model.JwtCustomClaims{
 		UserId:      user.UserId,
 		Role:        user.Role,

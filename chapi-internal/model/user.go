@@ -1,7 +1,7 @@
 package model
 
-type User struct {
-	UserId      string `json:"userId,omitempty" db:"user_id,omitempty"`
+type User struct { // tag
+	UserId      string `json:"user,omitempty" db:"user_id,omitempty"` // tags golang + parse json
 	Role        string `json:"role,omitempty" db:"role,omitempty"`
 	Phone       string `json:"phone,omitempty" db:"phone,omitempty" valid:"required"`
 	Password    string `json:"password,omitempty" db:"password,omitempty" valid:"required"`

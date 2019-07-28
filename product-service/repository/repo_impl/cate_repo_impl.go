@@ -1,9 +1,9 @@
 package repo_impl
 
 import (
-	"chapi-backend/chapi-internal/db"
-	"chapi-backend/product-service/model"
-	"chapi-backend/product-service/repository"
+	"github.com/thanhniencung/chapi-internal/db"
+	"product-service/model"
+	"product-service/repository"
 	"context"
 	"errors"
 	"time"

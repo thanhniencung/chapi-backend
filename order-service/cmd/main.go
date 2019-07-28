@@ -9,7 +9,7 @@ import (
 
 func main() {
 	sql := &db.Sql{
-		Host:     "localhost",
+		Host:     "host.docker.internal",
 		Port:     5432,
 		UserName: "ryan",
 		Password: "postgres",

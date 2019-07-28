@@ -1,15 +1,15 @@
 package main
 
 import (
-	"chapi-backend/chapi-internal/db"
-	"chapi-backend/product-service/router"
+	"github.com/thanhniencung/chapi-internal/db"
+	"product-service/router"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
 
 func main() {
 	sql := &db.Sql{
-		Host:     "localhost",
+		Host:     "host.docker.internal", //host.docker.internal
 		Port:     5432,
 		UserName: "ryan",
 		Password: "postgres",

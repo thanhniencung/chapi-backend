@@ -1,5 +1,6 @@
 run:
-	cd cmd && go get -v && go build -o user-service && ./user-service
+	cd cmd && go get -v && GOOS=linux go build -o user-service
+	docker-compose up
 
 lib:
 	cd cmd && go get -v

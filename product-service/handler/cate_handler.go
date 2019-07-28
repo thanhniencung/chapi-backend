@@ -1,11 +1,11 @@
 package handler
 
 import (
-	"chapi-backend/chapi-internal/encrypt"
-	"chapi-backend/chapi-internal/helper"
-	internalModel "chapi-backend/chapi-internal/model"
-	"chapi-backend/product-service/model"
-	"chapi-backend/product-service/repository"
+	"github.com/thanhniencung/chapi-internal/encrypt"
+	"github.com/thanhniencung/chapi-internal/helper"
+	internalModel "github.com/thanhniencung/chapi-internal/model"
+	"product-service/model"
+	"product-service/repository"
 	"context"
 	"github.com/asaskevich/govalidator"
 	"github.com/dgrijalva/jwt-go"
